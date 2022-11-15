@@ -1,48 +1,54 @@
 class Boid{
-  float[] position = new float[2]; //(x, y)
-  float[] velocity = new float[2]; //(x, y)
+  float xpos, ypos, xvel, yvel;
   
-  void Boid(){
-    position[0] = displayWidth+random(0, 50);
-    position[1] = displayHeight+random(0, 50);
-    velocity[0] = 0;
-    velocity[1] = 0;
+  Boid(){
+    xpos = random(0, displayWidth); //+random(0, 50);
+    ypos = random(0, displayHeight); //+random(0, 50);
+    xvel = 0;
+    yvel = 0;
   }
   
   void DrawBoid(){
-    circle(position[0], position[1], 10);
+    circle(xpos, ypos, 10);
   }
   
   float XPos(){ 
-    return position[0]; 
+    return xpos; 
   }
   void setXPos(float x){
-    position[0] = x;
+    //println("reaching set xPos");
+    xpos = x;
+    //println(xpos);
+    if(xpos > displayWidth) xpos = 0;
   }
   
   float YPos(){ 
-    return position[1]; 
+    return ypos; 
   }
   void setYPos(float y){
-    position[1] = y;
+    ypos = y;
+    if(ypos < 0) ypos = displayHeight;
+
   }
   
   float XVel(){ 
-    return velocity[0]; 
+    return xvel; 
   }
-  void setXVel(float x){
-    velocity[0] = x;
-  }
+  //void setXVel(float x){
+  //  velocity[0] = x;
+  //}
   
   float YVel(){ 
-    return velocity[1]; 
+    return yvel; 
   }
-  void setYVel(float y){
-    velocity[1] = y;
-  }
+  //void setYVel(float y){
+  //  velocity[1] = y;
+  //}
   
   void AddToVelocity(float x, float y){
-    velocity[0] += x;
-    velocity[1] += y;
+    //print("reached AddToVelocity function ");
+    xvel += x;
+    yvel += y;
+    println(xvel, yvel);
   }
 }
