@@ -12,7 +12,7 @@ void setup(){ //initialize positions
   for(int boid = 0; boid < boid_count; boid++){ //I find this hilarious
     boids[boid] = new Boid();
   }
-  println("start");
+  //println("start");
 }
 
 void draw(){ //draw boids
@@ -108,5 +108,5 @@ void rule3(int boid){ //pass boid
   pvy = (pvy - boids[boid].YVel()) * Dt;
 
   boids[boid].AddToVelocity(pvx, pvy);  
-  println(boid);
+  //println(boid);
 }

@@ -20,6 +20,7 @@ class Boid{
     xpos = x;
     //println(xpos);
     if(xpos > displayWidth) xpos = 0;
+    if(xpos < 0) xpos = displayWidth;
   }
   
   float YPos(){ 
@@ -28,6 +29,7 @@ class Boid{
   void setYPos(float y){
     ypos = y;
     if(ypos < 0) ypos = displayHeight;
+    if(ypos > displayHeight) ypos = 0;
 
   }
   
@@ -49,6 +51,6 @@ class Boid{
     //print("reached AddToVelocity function ");
     xvel += x;
     yvel += y;
-    println(xvel, yvel);
+    //println(xvel, yvel);
   }
 }
