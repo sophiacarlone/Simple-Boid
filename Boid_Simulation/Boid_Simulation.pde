@@ -1,9 +1,10 @@
 //Sophia Carlone
 
+float SPEEDCAP = 3;
 float Dt = 0.00001;
-//float slow = 1000.0;
 float R = 0.0; //radius for collision avoidance / separation
-int boid_count = 50;
+
+int boid_count = 20;
 Boid[] boids = new Boid[boid_count]; //learning moment: these objects will be set as null
 
 void setup(){ //initialize positions
@@ -25,19 +26,25 @@ void draw(){ //draw boids
 }
   
 void NewPositions(){
+  Boid b;
   //note: processing does not have vectors and I am not as familar with processing
   //TODO: arrays used, find possible better container
   //println("reached NewPositions function ");
-  for(int boid = 0; boid < boid_count; boid++){
-    rule1(boid);
-    rule2(boid);
-    rule3(boid);
+  for(int i = 0; i < boid_count; i++){
+    b = boids[i];
+    rule1(i);
+    rule2(i);
+    rule3(i);
+    if(b.Speed() > SPEEDCAP){
+      b.setXVel((b.XVel()/b.Speed()) * SPEEDCAP);
+      b.setYVel((b.YVel()/b.Speed()) * SPEEDCAP);
+    }
     /*TODO: different possibilities here
     have functions return a pointer
     have setter and getters for the Boid class
     */
-    boids[boid].setXPos(boids[boid].XPos() + boids[boid].XVel());
-    boids[boid].setYPos(boids[boid].YPos() + boids[boid].YVel());
+    b.setXPos(b.XPos() + b.XVel());
+    b.setYPos(b.YPos() + b.YVel());
   }
 }
 

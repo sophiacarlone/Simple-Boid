@@ -1,3 +1,5 @@
+//import Math;
+
 class Boid{
   float xpos, ypos, xvel, yvel;
   
@@ -36,21 +38,27 @@ class Boid{
   float XVel(){ 
     return xvel; 
   }
-  //void setXVel(float x){
-  //  velocity[0] = x;
-  //}
+  
+  void setXVel(float x){
+    xvel = x;
+  }
   
   float YVel(){ 
     return yvel; 
   }
-  //void setYVel(float y){
-  //  velocity[1] = y;
-  //}
+  
+  void setYVel(float y){
+    yvel = y;
+  }
   
   void AddToVelocity(float x, float y){
     //print("reached AddToVelocity function ");
     xvel += x;
     yvel += y;
     //println(xvel, yvel);
+  }
+  
+  float Speed(){
+     return (float)sqrt((xvel * xvel) + (yvel * yvel));
   }
 }
